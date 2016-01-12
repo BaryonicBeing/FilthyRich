@@ -4,5 +4,5 @@
 
 class People {
 public:
-	static std::vector<Person> personList;
+	std::vector<Person> personList;
 };
