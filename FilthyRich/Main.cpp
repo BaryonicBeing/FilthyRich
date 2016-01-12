@@ -12,4 +12,5 @@ int main() {
 	std::cout << "The total sum is " << fr.sumOfAll() << std::endl;	
 	std::cout << "The average age is " << fr.avgAge() << std::endl;
 	std::cout << "The average networth is " << fr.avgNet() << std::endl;
+	fr.topTen();
 }

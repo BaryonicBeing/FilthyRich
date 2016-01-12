@@ -75,7 +75,19 @@ public:
 		return sumOfAll() / allGuys();
 	}
 
+	void topTen() {
+		int rank = 1;
+		while (rank != 10) {
+			for (Person pe : p.personList) {
+				if (pe.getRank() == rank) {
+					std::cout << rank << ". " << pe.getName() << std::endl;
+					
+				}
 
+			}
+			rank++;
+		}
+	}
 	//avg age, avg networth, top10, country with sumofcapital and number of people desc.
 };
 
