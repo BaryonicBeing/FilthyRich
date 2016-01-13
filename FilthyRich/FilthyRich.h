@@ -4,6 +4,7 @@
 #include <sstream>
 #include <vector>
 #include <string>
+#include <algorithm>
 #include "Person.h"
 #include "People.h"
 
@@ -76,16 +77,11 @@ public:
 	}
 
 	void topTen() {
-		int rank = 1;
-		while (rank != 10) {
-			for (Person pe : p.personList) {
-				if (pe.getRank() == rank) {
-					std::cout << rank << ". " << pe.getName() << std::endl;
-					
-				}
-
-			}
-			rank++;
+		sort(p.personList.begin(), p.personList.end(), [](Person a, Person b) ->bool{ return a.getRank() < b.getRank(); });
+		int count = 1;
+		for (Person pe : p.personList) {
+				std::cout << pe.getRank() << pe.getName() << std::endl;
+			
 		}
 	}
 	//avg age, avg networth, top10, country with sumofcapital and number of people desc.
