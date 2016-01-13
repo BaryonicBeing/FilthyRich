@@ -77,13 +77,12 @@ public:
 	}
 
 	void topTen() {
-		sort(p.personList.begin(), p.personList.end(), [](Person a, Person b) ->bool{ return a.getRank() < b.getRank(); });
-		int count = 1;
-		for (Person pe : p.personList) {
-				std::cout << pe.getRank() << pe.getName() << std::endl;
-			
+		sort(p.personList.begin(), p.personList.end(), [](Person a, Person b) ->bool { return a.getRank() < b.getRank(); });
+		for (int i = 0; i < 10; ++i) {
+			std::cout << p.personList[i] << std::endl;
 		}
 	}
+
 	//avg age, avg networth, top10, country with sumofcapital and number of people desc.
 };
 

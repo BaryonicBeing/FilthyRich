@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <string>
 
 class Person {
@@ -16,6 +17,7 @@ public:
 		this->netWorth = net;
 		sourceOfWealth = srcow;
 	}
+	friend std::ostream& operator<< (std::ostream &os, Person &pe);
 
 	void setRank(int r) { rank = r; };
 	void setName(std::string n) { name = n; };
@@ -30,4 +32,10 @@ public:
 	int getAge() { return age; };
 	float getNetWorth() { return netWorth; };
 	std::string getSourceOfWealth() { return sourceOfWealth; };
+
 };
+
+static std::ostream& operator<<(std::ostream &os, Person &pe) {
+	os << pe.rank << pe.name;
+	return os;
+}
