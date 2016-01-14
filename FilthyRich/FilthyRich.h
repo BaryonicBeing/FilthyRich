@@ -7,7 +7,7 @@
 #include <algorithm>
 #include "Person.h"
 #include "People.h"
-
+#include "Country.h"
 
 class FileReader {
 public:
@@ -83,7 +83,31 @@ public:
 		}
 	}
 
-	//avg age, avg networth, top10, country with sumofcapital and number of people desc.
+	void sortByCountries() {
+
+		//far from done.
+		Person person = p.personList[0];
+		Country c(person.getCitizenship(), 1, person.getNetWorth());
+		Country* pc = &c;
+		std::vector<Country> byCountries;
+		Person tmp = person;
+
+		for (Person pe : p.personList) {
+			tmp = pe;
+			if (!((*pc).getName().compare(pe.getCitizenship()))) {
+				(*pc).addBillionare();
+				(*pc).setSum((*pc).getSum() + pe.getNetWorth());
+			}
+			else {
+				byCountries.push_back(c);
+				person = tmp;
+				*pc = Country(person.getCitizenship(), 1, person.getNetWorth());
+			}
+			std::cout << *pc << std::endl;
+		}
+	}
+
+	//missing: country with sumofcapital and number of people desc.
 };
 
 

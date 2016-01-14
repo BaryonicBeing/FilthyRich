@@ -17,6 +17,7 @@ public:
 		this->netWorth = net;
 		sourceOfWealth = srcow;
 	}
+	//ostream is added as a friend to directly get access to its values.
 	friend std::ostream& operator<< (std::ostream &os, Person &pe);
 
 	void setRank(int r) { rank = r; };
@@ -36,6 +37,6 @@ public:
 };
 
 static std::ostream& operator<<(std::ostream &os, Person &pe) {
-	os << pe.rank << pe.name;
+	os << pe.rank << '\t' << pe.name;
 	return os;
 }

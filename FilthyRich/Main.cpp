@@ -13,4 +13,5 @@ int main() {
 	std::cout << "The average age is " << fr.avgAge() << std::endl;
 	std::cout << "The average networth is " << fr.avgNet() << std::endl;
 	fr.topTen();
+	fr.sortByCountries();
 }
