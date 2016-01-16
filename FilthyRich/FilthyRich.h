@@ -42,7 +42,6 @@ public:
 				//tokens: 0 = rank, 1 = name, 2 = citizenship, 3 = age, 4 = networth, 5 = source of wealth
 				p.personList.push_back(Person(stoi(tokens[0]), tokens[1], tokens[2], stoi(tokens[3]), stof(tokens[4]), tokens[5]));
 			}
-			//std::getline(stream, currentLine);
 		}
 	}
 
@@ -76,24 +75,15 @@ public:
 		return sumOfAll() / allGuys();
 	}
 
-	void topTen() {
-		sort(p.personList.begin(), p.personList.end(), [](Person a, Person b) ->bool { return a.getRank() < b.getRank(); });
-		for (int i = 0; i < 10; ++i) {
-			std::cout << p.personList[i] << std::endl;
-		}
-	}
-
 	void sortByCountries() {
 
-		//far from done.
 		Person person = p.personList[0];
 		Country c(person.getCitizenship(), 1, person.getNetWorth());
 		Country* pc = &c;
 		std::vector<Country> byCountries;
-
 		for (Person pe : p.personList) {
 			Person tmp = pe;
-			if ((*pc).getName().compare(pe.getCitizenship())) {
+			if ((*pc).getName().compare(pe.getCitizenship()) == 0) {
 				(*pc).addBillionare();
 				(*pc).setSum((*pc).getSum() + pe.getNetWorth());
 			}
@@ -103,13 +93,20 @@ public:
 				*pc = Country(tmp.getCitizenship(), 1, tmp.getNetWorth());
 			}
 		}
-		sort(byCountries.begin(), byCountries.end(), [](Country a, Country b) ->bool { return b.getSum() > a.getSum(); });
+		sort(byCountries.begin(), byCountries.end(), [](Country a, Country b) ->bool { return b.getSum() < a.getSum(); });
 		for (Country c : byCountries) {
 			std::cout << c << std::endl;
 		}
 	}
 
-	//missing: country with sumofcapital and number of people desc.
+	void topTen() {
+		sort(p.personList.begin(), p.personList.end(), [](Person a, Person b) ->bool { return a.getRank() < b.getRank(); });
+		for (int i = 0; i < 10; ++i) {
+			std::cout << p.personList[i] << std::endl;
+		}
+	}
+
+	
 };
 
 

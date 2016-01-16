@@ -9,9 +9,11 @@ FileReader fr(richPeople);
 int main() {
 
 	fr.initPersons();
-	std::cout << "The total sum is " << fr.sumOfAll() << std::endl;	
-	std::cout << "The average age is " << fr.avgAge() << std::endl;
-	std::cout << "The average networth is " << fr.avgNet() << std::endl;
-	fr.topTen();
+	std::cout << "The total sum is " << fr.sumOfAll() << "\n" << std::endl;	
+	std::cout << "The average age is " << fr.avgAge() << "\n" << std::endl;
+	std::cout << "The average networth is " << fr.avgNet() << "\n" << std::endl;
 	fr.sortByCountries();
+	std::cout << std::endl;
+	fr.topTen();
+	
 }
