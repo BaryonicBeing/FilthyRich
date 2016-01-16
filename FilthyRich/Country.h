@@ -26,6 +26,6 @@ public:
 };
 
 static std::ostream& operator<<(std::ostream &os, Country &c) {
-	os << c.billionares << " " << c.sumOfMoney;
+	os << c.name << " " << c.billionares << " " << c.sumOfMoney;
 	return os;
 }

@@ -90,20 +90,22 @@ public:
 		Country c(person.getCitizenship(), 1, person.getNetWorth());
 		Country* pc = &c;
 		std::vector<Country> byCountries;
-		Person tmp = person;
 
 		for (Person pe : p.personList) {
-			tmp = pe;
-			if (!((*pc).getName().compare(pe.getCitizenship()))) {
+			Person tmp = pe;
+			if ((*pc).getName().compare(pe.getCitizenship())) {
 				(*pc).addBillionare();
 				(*pc).setSum((*pc).getSum() + pe.getNetWorth());
 			}
 			else {
 				byCountries.push_back(c);
 				person = tmp;
-				*pc = Country(person.getCitizenship(), 1, person.getNetWorth());
+				*pc = Country(tmp.getCitizenship(), 1, tmp.getNetWorth());
 			}
-			std::cout << *pc << std::endl;
+		}
+		sort(byCountries.begin(), byCountries.end(), [](Country a, Country b) ->bool { return b.getSum() > a.getSum(); });
+		for (Country c : byCountries) {
+			std::cout << c << std::endl;
 		}
 	}
 
