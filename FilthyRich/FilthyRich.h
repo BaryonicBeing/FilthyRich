@@ -63,12 +63,10 @@ public:
 
 	float avgAge() {
 		float age = 0.0;
-		int numOfPerson = 0;
 		for (Person pe : p.personList) {
 			age += pe.getAge();
-			numOfPerson++;
 		}
-		return age / numOfPerson;
+		return age / allGuys();
 	}
 
 	float avgNet() {
@@ -78,21 +76,20 @@ public:
 	void sortByCountries() {
 
 		Country c(p.personList[0].getCitizenship(), 0, 0.0f);
-		Country* pc = &c;
 		std::vector<Country> byCountries;
 
 		for (Person pe : p.personList) {
 			Person tmp = pe;
-			if ((*pc).getName().compare(pe.getCitizenship()) == 0) {
-				(*pc).addBillionare();
-				(*pc).setSum((*pc).getSum() + pe.getNetWorth());
+			if (c.getName().compare(pe.getCitizenship()) == 0) {
+				c.addBillionare();
+				c.setSum(c.getSum() + pe.getNetWorth());
 			}
 			else {
 				byCountries.push_back(c);
-				*pc = Country(tmp.getCitizenship(), 1, tmp.getNetWorth());
+				c = Country(pe.getCitizenship(), 1, pe.getNetWorth());
 			}
 		}
-		sort(byCountries.begin(), byCountries.end(), [](Country a, Country b) ->bool { return b.getSum() < a.getSum(); });
+		sort(byCountries.begin(), byCountries.end(), [](Country a, Country b) ->bool { return a.getSum() > b.getSum(); });
 		for (Country c : byCountries) {
 			std::cout << c << std::endl;
 		}
