@@ -77,10 +77,10 @@ public:
 
 	void sortByCountries() {
 
-		Person person = p.personList[0];
-		Country c(person.getCitizenship(), 1, person.getNetWorth());
+		Country c(p.personList[0].getCitizenship(), 0, 0.0f);
 		Country* pc = &c;
 		std::vector<Country> byCountries;
+
 		for (Person pe : p.personList) {
 			Person tmp = pe;
 			if ((*pc).getName().compare(pe.getCitizenship()) == 0) {
@@ -89,7 +89,6 @@ public:
 			}
 			else {
 				byCountries.push_back(c);
-				person = tmp;
 				*pc = Country(tmp.getCitizenship(), 1, tmp.getNetWorth());
 			}
 		}
